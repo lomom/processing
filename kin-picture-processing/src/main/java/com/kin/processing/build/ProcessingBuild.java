@@ -19,7 +19,7 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
+@ToString(callSuper = true)
 public class ProcessingBuild extends PositionSizeAbs {
 
 	private String imagePath;
@@ -32,6 +32,38 @@ public class ProcessingBuild extends PositionSizeAbs {
 
 	private int height;
 
+	/**
+	 * 
+	 * Title:
+	 * Description:
+	 * 
+	 * @param x
+	 *        x坐标
+	 * @param y
+	 *        y坐标
+	 * @param translateX
+	 *        坐标轴平移x
+	 * @param translateY
+	 *        坐标轴平移y
+	 * @param scaleX
+	 *        缩放x
+	 * @param scaleY
+	 *        缩放y
+	 * @param rotate
+	 *        旋转
+	 * @param opacity
+	 *        透明度
+	 * @param imagePath
+	 *        图片地址
+	 * @param imageFile
+	 *        图片文件
+	 * @param bufferedImage
+	 *        图片
+	 * @param width
+	 *        图片宽
+	 * @param height
+	 *        图片高
+	 */
 	@Builder
 	public ProcessingBuild(int x, int y, int translateX, int translateY, double scaleX, double scaleY, double rotate,
 			Double opacity, String imagePath, File imageFile, BufferedImage bufferedImage, int width, int height) {

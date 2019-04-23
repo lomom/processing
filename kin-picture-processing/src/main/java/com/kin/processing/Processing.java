@@ -1,8 +1,6 @@
 package com.kin.processing;
 
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -40,6 +38,14 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * 
+ * @ClassName: Processing
+ * @Description: 方法主体
+ * @author cxz
+ * @date 2019年4月19日 下午5:56:08
+ *
+ */
 @Getter
 @Setter
 @Builder
@@ -58,10 +64,11 @@ public class Processing {
 	/**
 	 * 
 	 * @Title: init
-	 * @Description: 根据svg生成图片
-	 * @param @param quality 输出图片质量
-	 * @return void 返回类型
-	 * @throws
+	 * @Description: 初始化方法
+	 * @param quality
+	 *        透明度设置
+	 * @param filePath
+	 *        文件路径
 	 */
 	public void init(double quality, String filePath) {
 		// 初始化g2d工具以及原石document文档流操作
@@ -96,10 +103,7 @@ public class Processing {
 	/**
 	 * 
 	 * @Title: execution
-	 * @Description: 执行图形处理
-	 * @param 设定文件
-	 * @return void 返回类型
-	 * @throws
+	 * @Description: 绘图总控
 	 */
 	public void execution() {
 		drawCanvasSize();
@@ -116,13 +120,10 @@ public class Processing {
 	 * 
 	 * @Title: drawCanvasSize
 	 * @Description: 画布布局写入
-	 * @param 设定文件
-	 * @return void 返回类型
-	 * @throws
 	 */
 	private void drawCanvasSize() {
 
-		// 验证canvasbuild知否为空
+		// 验证canvasbuild是否为空
 		Optional.ofNullable(this.getCanvasBuild())
 				.orElseThrow(() -> new NullPointerException(ExceptionError.CanvasBuildNullError));
 
@@ -160,10 +161,8 @@ public class Processing {
 	/**
 	 * 
 	 * @Title: drawCanvasImages
-	 * @Description: 绘制图片
-	 * @param @param imagesItem 设定文件
-	 * @return void 返回类型
-	 * @throws
+	 * @Description: 绘制背景
+	 * @param 背景Build实体
 	 */
 	private void drawCanvasImages(ProcessingBuild imagesItem) {
 
@@ -231,21 +230,20 @@ public class Processing {
 	/**
 	 * 
 	 * @Title: drawText
-	 * @Description: 写文字
-	 * @param 设定文件
-	 * @return void 返回类型
-	 * @throws
+	 * @Description: 绘制文字
+	 * @param textItem
+	 *        文字Build实体
 	 */
 	private void drawText(TextFontBuild textItem) {
 
 		verification(textItem);
-		
+
 		if (!Optional.ofNullable(textItem.getOpacity()).isPresent()) {
-			
+
 			this.g2d.setFont(textItem.getFont());
 			this.g2d.setColor(textItem.getColor());
 			this.g2d.drawString(textItem.getContext(), textItem.getX(), textItem.getY());
-			
+
 		} else {
 			Element topLevelGroup = this.g2d.getTopLevelGroup();
 			svgRoot.appendChild(topLevelGroup);
@@ -272,9 +270,8 @@ public class Processing {
 	 * 
 	 * @Title: verification
 	 * @Description: 设置特效
-	 * @param @param build 设定文件
-	 * @return void 返回类型
-	 * @throws
+	 * @param build
+	 *        特效Build实体
 	 */
 	private void verification(PositionSizeAbs build) {
 		build = VerificationAndResetG2d.verification(build);
@@ -287,9 +284,8 @@ public class Processing {
 	 * 
 	 * @Title: verTransform
 	 * @Description: 设置transform属性
-	 * @param @param posinItem
-	 * @param @return 设定文件
-	 * @return String 返回类型
+	 * @param 坐标定位
+	 * @return String 生成坐标字符串
 	 * @throws
 	 */
 	private String verTransform(PositionSizeAbs posinItem) {
@@ -302,8 +298,7 @@ public class Processing {
 	 * 
 	 * @Title: resetG2d
 	 * @Description: 重置画笔
-	 * @param @param build 设定文件
-	 * @return void 返回类型
+	 * @param build 坐标build文件
 	 * @throws
 	 */
 	private void resetG2d(PositionSizeAbs build) {
@@ -316,10 +311,9 @@ public class Processing {
 	 * 
 	 * @Title: buildImageFileOrUrl
 	 * @Description: 解析图片
-	 * @param @param buildImage
-	 * @param @return 设定文件
-	 * @return BufferedImage 返回类型
-	 * @throws
+	 * @param buildImage
+	 *        图片Build实体
+	 * @return 图片Build实体
 	 */
 	public BufferedImage buildImageFileOrUrl(ProcessingBuild buildImage) {
 
@@ -350,10 +344,9 @@ public class Processing {
 	/**
 	 * 
 	 * @Title: getImagesByFileOrUrl
-	 * @Description: 获取图片
-	 * @param @param canvasBuild
-	 * @param @return 设定文件
-	 * @return BufferedImage 返回类型
+	 * @Description: 根据参数获取图片Buffered
+	 * @param canvasBuild 图片Buffered
+	 * @return 图片Buffered
 	 * @throws
 	 */
 	private BufferedImage getImagesByFileOrUrl(CanvasBuild canvasBuild) {
@@ -382,32 +375,34 @@ public class Processing {
 		return canvasBuild.getBackendImage();
 	}
 
-	public static void main(String[] args) throws Exception {
-
-		File file = new File("C:/data/abc.jpg");
-		File file1 = new File("C:/data/1.jpg");
-
-		CanvasBuild canvasBuild = CanvasBuild.builder().backendImageFile(file).build();
-
-		canvasBuild.addImagesFile(ProcessingBuild.builder().rotate(19).x(100).imageFile(file1).build());
-
-		canvasBuild.addImagesFile(ProcessingBuild.builder().width(300).height(800).y(300).rotate(45)
-				.imagePath("https://pic1.zhimg.com/v2-1dbd32963f19d1c5eba1acc103c1d398_b.jpg").build());
-
-		canvasBuild.addTextSize(TextFontBuild.builder().context("1111").x(120).y(220).color(Color.yellow).build());
-
-		canvasBuild.addTextSize(TextFontBuild.builder().context("测试数据").x(310).y(210).rotate(45).color(Color.YELLOW)
-				.font(new Font("宋体", Font.BOLD, 144)).opacity(0.2).build());
-
-		canvasBuild.addTextSize(TextFontBuild.builder().context("123aaaaaaaaaaaaa").x(310).y(210).color(Color.GREEN)
-				.font(new Font("宋体", Font.BOLD, 44)).opacity(0.9).build());
-
-		canvasBuild.addTextSize(TextFontBuild.builder().context("145").rotate(45).x(100).y(120).build());
-
-		canvasBuild.addTextSize(TextFontBuild.builder().context("123123123").x(100).y(220).build());
-
-		canvasBuild.addTextSize(TextFontBuild.builder().context("789").x(100).y(420).build());
-
-		Processing.builder().canvasBuild(canvasBuild).build().init(.8, "C:\\data\\img\\out1.jpg");
-	}
+	// public static void main(String[] args) throws Exception {
+	//
+	// File file = new File("C:/data/abc.jpg");
+	// File file1 = new File("C:/data/1.jpg");
+	//
+	// CanvasBuild canvasBuild =
+	// CanvasBuild.builder().backendImageFile(file).build();
+	//
+	// canvasBuild.addImagesFile(ProcessingBuild.builder().rotate(19).x(100).imageFile(file1).build());
+	//
+	// canvasBuild.addImagesFile(ProcessingBuild.builder().width(300).height(800).y(300).rotate(45)
+	// .imagePath("https://pic1.zhimg.com/v2-1dbd32963f19d1c5eba1acc103c1d398_b.jpg").build());
+	//
+	// canvasBuild.addTextSize(TextFontBuild.builder().context("1111").x(120).y(220).color(Color.yellow).build());
+	//
+	// canvasBuild.addTextSize(TextFontBuild.builder().context("测试数据").x(310).y(210).rotate(45).color(Color.YELLOW)
+	// .font(new Font("宋体", Font.BOLD, 144)).opacity(0.2).build());
+	//
+	// canvasBuild.addTextSize(TextFontBuild.builder().context("123aaaaaaaaaaaaa").x(310).y(210).color(Color.GREEN)
+	// .font(new Font("宋体", Font.BOLD, 44)).opacity(0.9).build());
+	//
+	// canvasBuild.addTextSize(TextFontBuild.builder().context("145").rotate(45).x(100).y(120).build());
+	//
+	// canvasBuild.addTextSize(TextFontBuild.builder().context("123123123").x(100).y(220).build());
+	//
+	// canvasBuild.addTextSize(TextFontBuild.builder().context("789").x(100).y(420).build());
+	//
+	// Processing.builder().canvasBuild(canvasBuild).build().init(.8,
+	// "C:\\data\\img\\out1.jpg");
+	// }
 }

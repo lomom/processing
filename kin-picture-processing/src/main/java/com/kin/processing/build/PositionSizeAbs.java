@@ -8,13 +8,12 @@ import lombok.ToString;
 
 /**
  * 
- * @ClassName: PositionSizeBuild
- * @Description: 坐标定位
- * @author 50183
- * @date 2019年3月22日 下午4:24:25
+ * @ClassName: PositionSizeAbs
+ * @Description: 坐标定位实体
+ * @author cxz
+ * @date 2019年4月19日 下午6:09:33
  *
  */
-
 @Getter
 @Setter
 @ToString
