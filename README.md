@@ -1,6 +1,7 @@
 # Batik-Employ
 
 [![Gitter](https://badges.gitter.im/Kin-Picture-Processing/community.svg)](https://gitter.im/Kin-Picture-Processing/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.lomom/oss-parent.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.lomom%22%20AND%20a:%22oss-parent%22)
 [![License](https://img.shields.io/badge/License-Apache--2.0-brightgreen.svg)](https://dev.tencent.com/u/chenxinzhe/p/Kin-Picture-Processing/git/blob/master/License)
 
 
