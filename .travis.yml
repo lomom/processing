@@ -2,9 +2,12 @@ language: java
 sudo: false # faster builds
 
 jdk:
-  - oraclejdk8
+    - oraclejdk8
 
 
 env:
   global:
     - CODECOV_TOKEN=:5da3a823-3e30-4093-b028-cc65a392abce
+
+script:
+    - mvn install
