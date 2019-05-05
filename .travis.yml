@@ -9,4 +9,4 @@ env:
   global:
     - CODECOV_TOKEN=:5da3a823-3e30-4093-b028-cc65a392abce
 
-install: mvn install -DskipTests=false -Dmaven.javadoc.skip=true -Dgpg.skip=true
+install: cd kin-picture-processing && mvn install -DskipTests=false -Dmaven.javadoc.skip=true -Dgpg.skip=true
