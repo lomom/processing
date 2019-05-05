@@ -37,7 +37,7 @@ public class ProcessingTest {
 
 		canvasBuild.addTextSize(TextFontBuild.builder().context("789").x(100).y(420).build());
 
-		Processing.builder().canvasBuild(canvasBuild).build().init(.8, "/data/img/test.jpg");
+		Processing.builder().canvasBuild(canvasBuild).build().init(.8, "/data/img/", "test.jpg");
 	}
 
 }

@@ -26,6 +26,7 @@ import com.kin.processing.build.PositionSizeAbs;
 import com.kin.processing.build.ProcessingBuild;
 import com.kin.processing.build.TextFontBuild;
 import com.kin.processing.util.GetHttpImages;
+import com.kin.processing.util.MethodUtil;
 import com.kin.processing.util.ProcessingCode.CanvasCode;
 import com.kin.processing.util.ProcessingCode.ExceptionError;
 import com.kin.processing.util.ProcessingCode.SvgCode;
@@ -70,7 +71,8 @@ public class Processing {
 	 * @param filePath
 	 *        文件路径
 	 */
-	public void init(double quality, String filePath) {
+	public void init(double quality, String filePath, String fileName) {
+		MethodUtil.createDir(filePath);
 		// 初始化g2d工具以及原石document文档流操作
 		DOMImplementation domImpl = SVGDOMImplementation.getDOMImplementation();
 		this.doc = (SVGDocument) domImpl.createDocument(svgNS, SvgCode.QualifiedName, null);
@@ -87,7 +89,7 @@ public class Processing {
 
 		TranscoderInput input = new TranscoderInput(doc);
 
-		try (OutputStream ostream = new FileOutputStream(filePath)) {
+		try (OutputStream ostream = new FileOutputStream(filePath + fileName)) {
 
 			TranscoderOutput output = new TranscoderOutput(ostream);
 
