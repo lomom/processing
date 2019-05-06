@@ -17,6 +17,7 @@ public class MethodUtil {
 	 * @Title: createDir
 	 * @Description: 根据路径创建文件目录
 	 * @param destDirName
+	 *        文件目录
 	 * @return 文件目录
 	 */
 	public static boolean createDir(String destDirName) {

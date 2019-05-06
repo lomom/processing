@@ -70,6 +70,9 @@ public class Processing {
 	 *        透明度设置
 	 * @param filePath
 	 *        文件路径
+	 * @param fileName
+	 *        文件名称
+	 * 
 	 */
 	public void init(double quality, String filePath, String fileName) {
 		MethodUtil.createDir(filePath);

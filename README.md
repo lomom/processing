@@ -2,8 +2,10 @@
 
 [![Gitter](https://badges.gitter.im/Kin-Picture-Processing/community.svg)](https://gitter.im/Kin-Picture-Processing/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.lomom/oss-parent.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.lomom%22%20AND%20a:%22oss-parent%22)
+[![Build status](https://travis-ci.com/lomom/processing.svg?branch=master)](https://travis-ci.org/twitter/util)
+[![codecov](https://codecov.io/gh/lomom/processing/branch/master/graph/badge.svg)](https://codecov.io/gh/lomom/processing)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/35aa47e5d4e14e70a4757c4cfa911c2a)](https://www.codacy.com/app/lomom/processing?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=lomom/processing&amp;utm_campaign=Badge_Grade)
 [![License](https://img.shields.io/badge/License-Apache--2.0-brightgreen.svg)](https://dev.tencent.com/u/chenxinzhe/p/Kin-Picture-Processing/git/blob/master/License)
-
 
 [toc]
 
