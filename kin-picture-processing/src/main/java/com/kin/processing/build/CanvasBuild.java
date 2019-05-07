@@ -45,7 +45,7 @@ public class CanvasBuild extends PositionSizeAbs {
 	/**
 	 * 
 	 * @Title: addElements
-	 * @Description: TODO(这里用一句话描述这个方法的作用)
+	 * @Description: 添加一个属性节点
 	 * @param e
 	 *        添加属性节点
 	 * @return 画板
@@ -58,7 +58,7 @@ public class CanvasBuild extends PositionSizeAbs {
 	/**
 	 * 
 	 * @Title: addImagesFile
-	 * @Description: TODO(这里用一句话描述这个方法的作用)
+	 * @Description: 添加图片文件
 	 * @param img
 	 *        添加图片文件
 	 * @return 画板
@@ -71,7 +71,7 @@ public class CanvasBuild extends PositionSizeAbs {
 	/**
 	 * 
 	 * @Title: addTextSize
-	 * @Description: TODO(这里用一句话描述这个方法的作用)
+	 * @Description: 添加文字
 	 * @param text
 	 *        添加文字
 	 * @return 画板
